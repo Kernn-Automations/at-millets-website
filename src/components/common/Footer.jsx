@@ -1,28 +1,62 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const Footer = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 767);
+      setIsTablet(width > 767 && width <= 1023);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <footer style={styles.footer}>
-      {/* Main Footer Content */}
-      <div style={styles.container}>
-        {/* Brand Section */}
+      <div
+        style={{
+          ...styles.container,
+          gridTemplateColumns: isMobile
+            ? "1fr"
+            : isTablet
+            ? "1fr 1fr"
+            : "1.4fr 2fr 1.2fr",
+          gap: isMobile ? "40px" : "48px",
+          textAlign: isMobile ? "center" : "left",
+        }}
+      >
+        {/* Brand */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={styles.brandSection}
+          style={{
+            ...styles.brandSection,
+            maxWidth: isMobile ? "100%" : "420px",
+            margin: isMobile ? "0 auto" : "0",
+          }}
         >
-          <div style={styles.brandHeader}>
+          <div
+            style={{
+              ...styles.brandHeader,
+              justifyContent: isMobile ? "center" : "flex-start",
+            }}
+          >
             <span style={styles.brandIcon}>🌾</span>
             <span style={styles.brandName}>AT Millets</span>
           </div>
 
           <p style={styles.brandDescription}>
             Premium millets, spices, and natural foods sourced directly from
-            tribal farmers of Araku Valley. From ancient grains to modern
-            lifestyles — naturally.
+            tribal farmers of Araku Valley.
           </p>
 
           <p style={styles.brandTagline}>
@@ -30,13 +64,17 @@ const Footer = () => {
           </p>
         </motion.div>
 
-        {/* Links Section */}
+        {/* Links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1, duration: 0.6 }}
-          style={styles.linksSection}
+          style={{
+            ...styles.linksSection,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
+            gap: isMobile ? "28px" : "32px",
+          }}
         >
           <FooterColumn
             title="Company"
@@ -47,6 +85,7 @@ const Footer = () => {
               ["Packaging", "/packaging-distribution"],
               ["Quality Standards", "/quality"],
             ]}
+            center={isMobile}
           />
 
           <FooterColumn
@@ -57,6 +96,7 @@ const Footer = () => {
               ["Spices & Naturals", "/spices"],
               ["Recipes & Usage", "/recipes"],
             ]}
+            center={isMobile}
           />
 
           <FooterColumn
@@ -66,16 +106,20 @@ const Footer = () => {
               ["Bulk Orders", "/bulk"],
               ["Contact Us", "/contact"],
             ]}
+            center={isMobile}
           />
         </motion.div>
 
-        {/* Contact & CTA */}
+        {/* Contact */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          style={styles.contactSection}
+          style={{
+            ...styles.contactSection,
+            textAlign: isMobile ? "center" : "left",
+          }}
         >
           <h4 style={styles.columnTitle}>Get in Touch</h4>
 
@@ -83,24 +127,35 @@ const Footer = () => {
           <p style={styles.contactItem}>📞 +91 XXXXX XXXXX</p>
           <p style={styles.contactItem}>✉️ info@atmillets.com</p>
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            style={styles.footerCtaWrapper}
-          >
-            <Link to="/franchise" style={styles.footerCta}>
+          <div style={{ marginTop: "20px" }}>
+            <Link
+              to="/franchise"
+              style={{
+                ...styles.footerCta,
+                display: "block",
+                width: isMobile ? "100%" : "fit-content",
+                margin: isMobile ? "0 auto" : "0",
+                textAlign: "center",
+              }}
+            >
               Become a Franchise Partner →
             </Link>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
 
       {/* Bottom Bar */}
-      <div style={styles.bottomBar}>
+      <div
+        style={{
+          ...styles.bottomBar,
+          flexDirection: isMobile ? "column" : "row",
+          gap: isMobile ? "6px" : "8px",
+        }}
+      >
         <span>
           © {new Date().getFullYear()} AT Millets Araku Naturals Pvt. Ltd.
         </span>
-        <span style={styles.bottomDivider}>•</span>
+        {!isMobile && <span style={styles.bottomDivider}>•</span>}
         <span>All rights reserved</span>
       </div>
     </footer>
@@ -111,17 +166,23 @@ export default Footer;
 
 /* ---------------- FOOTER COLUMN ---------------- */
 
-const FooterColumn = ({ title, links }) => (
-  <div style={styles.footerColumn}>
+const FooterColumn = ({ title, links, center }) => (
+  <div style={{ textAlign: center ? "center" : "left" }}>
     <h4 style={styles.columnTitle}>{title}</h4>
     <ul style={styles.linkList}>
       {links.map(([label, path]) => (
         <motion.li
           key={path}
-          whileHover={{ x: 6 }}
+          whileHover={{ x: center ? 0 : 6 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
-          <Link to={path} style={styles.footerLink}>
+          <Link
+            to={path}
+            style={{
+              ...styles.footerLink,
+              display: "inline-block",
+            }}
+          >
             {label}
           </Link>
         </motion.li>
