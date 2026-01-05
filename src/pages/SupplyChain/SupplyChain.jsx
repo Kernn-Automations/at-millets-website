@@ -1,9 +1,15 @@
+import React from "react";
+import SupplyChainIntroSection from "../../components/supplychain/SupplyChainIntroSection";
+import SupplyChainFlowSection from "../../components/supplychain/SupplyChainFlowSection";
+import QualityAssuranceSection from "../../components/supplychain/QualityAssuranceSection";
+
 const SupplyChain = () => {
   return (
-    <section>
-      <h2>Supply Chain & Processing</h2>
-      <p>Warehousing and district-wise processing model.</p>
-    </section>
+    <div>
+      <SupplyChainIntroSection />
+      <SupplyChainFlowSection />
+      <QualityAssuranceSection />
+    </div>
   );
 };
 

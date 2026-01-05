@@ -51,7 +51,7 @@ const AppRoutes = () => {
         />
 
         <Route
-          path="/supply-chain"
+          path="/supply"
           element={
             <PageTransition>
               <SupplyChain />
@@ -60,7 +60,7 @@ const AppRoutes = () => {
         />
 
         <Route
-          path="/packaging-distribution"
+          path="/packaging"
           element={
             <PageTransition>
               <Packaging />

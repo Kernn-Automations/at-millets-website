@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <title>Agricultural Supply Chain</title>
+  
+  <!-- Background -->
+  <g id="background">
+    <rect width="1200" height="400" fill="#ffffff"/>
+  </g>
+  
+  <!-- Title -->
+  <g id="title">
+    <text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#065f46">
+      Agricultural Supply Chain
+    </text>
+  </g>
+  
+  <!-- Connection Arrows -->
+  <g id="connection-arrows">
+    <defs>
+      <marker
+        id="arrowhead"
+        markerWidth="10"
+        markerHeight="10"
+        refX="9"
+        refY="3"
+        orient="auto"
+        fill="#10b981"
+      >
+        <polygon points="0 0, 10 3, 0 6" />
+      </marker>
+    </defs>
+    <line x1="240" y1="200" x2="410" y2="200" stroke="#10b981" stroke-width="3" marker-end="url(#arrowhead)" />
+    <line x1="540" y1="200" x2="710" y2="200" stroke="#10b981" stroke-width="3" marker-end="url(#arrowhead)" />
+    <line x1="840" y1="200" x2="1010" y2="200" stroke="#10b981" stroke-width="3" marker-end="url(#arrowhead)" />
+  </g>
+  
+  <!-- Layer 1: Farmers -->
+  <g id="layer-1-farmers" transform="translate(60, 100)">
+    <!-- Background Card -->
+    <rect x="20" y="0" width="160" height="160" rx="16" fill="#d1fae5"/>
+    
+    <!-- Icon -->
+    <g transform="translate(40, 20)">
+      <!-- Field background -->
+      <rect x="10" y="60" width="100" height="50" rx="4" fill="#a7f3d0" />
+      
+      <!-- Crops -->
+      <g id="crops">
+        <circle cx="25" cy="85" r="8" fill="#10b981" />
+        <rect x="23" y="85" width="4" height="15" fill="#059669" />
+        
+        <circle cx="45" cy="80" r="8" fill="#10b981" />
+        <rect x="43" y="80" width="4" height="20" fill="#059669" />
+        
+        <circle cx="65" cy="82" r="8" fill="#10b981" />
+        <rect x="63" y="82" width="4" height="18" fill="#059669" />
+        
+        <circle cx="85" cy="87" r="8" fill="#10b981" />
+        <rect x="83" y="87" width="4" height="13" fill="#059669" />
+      </g>
+      
+      <!-- Farmer -->
+      <g id="farmer">
+        <circle cx="95" cy="35" r="8" fill="#047857" />
+        <rect x="90" y="43" width="10" height="15" rx="2" fill="#059669" />
+        <rect x="86" y="48" width="6" height="2" fill="#059669" />
+        <rect x="98" y="48" width="6" height="2" fill="#059669" />
+        <rect x="92" y="58" width="3" height="12" fill="#047857" />
+        <rect x="95" y="58" width="3" height="12" fill="#047857" />
+      </g>
+      
+      <!-- Tool -->
+      <rect x="75" y="52" width="8" height="2" fill="#6b7280" transform="rotate(-45 79 53)" />
+    </g>
+    
+    <!-- Label -->
+    <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#064e3b">Farmers</text>
+    <text x="100" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#047857">Crop cultivation</text>
+  </g>
+  
+  <!-- Layer 2: Processing -->
+  <g id="layer-2-processing" transform="translate(360, 100)">
+    <!-- Background Card -->
+    <rect x="20" y="0" width="160" height="160" rx="16" fill="#d1fae5"/>
+    
+    <!-- Icon -->
+    <g transform="translate(40, 20)">
+      <!-- Factory building -->
+      <rect x="20" y="50" width="80" height="50" rx="4" fill="#10b981" />
+      <rect x="30" y="60" width="15" height="20" fill="#d1fae5" />
+      <rect x="55" y="60" width="15" height="20" fill="#d1fae5" />
+      <rect x="80" y="60" width="15" height="20" fill="#d1fae5" />
+      
+      <!-- Roof -->
+      <path d="M15 50 L60 25 L105 50 Z" fill="#059669" />
+      
+      <!-- Chimney -->
+      <rect x="75" y="15" width="12" height="15" fill="#047857" />
+      
+      <!-- Smoke -->
+      <g id="smoke" opacity="0.7">
+        <circle cx="78" cy="10" r="4" fill="#d1fae5" />
+        <circle cx="84" cy="8" r="4" fill="#d1fae5" />
+        <circle cx="88" cy="11" r="4" fill="#d1fae5" />
+      </g>
+      
+      <!-- Door -->
+      <rect x="50" y="80" width="20" height="20" rx="2" fill="#047857" />
+    </g>
+    
+    <!-- Label -->
+    <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#064e3b">Processing</text>
+    <text x="100" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#047857">Quality control</text>
+  </g>
+  
+  <!-- Layer 3: Packaging -->
+  <g id="layer-3-packaging" transform="translate(660, 100)">
+    <!-- Background Card -->
+    <rect x="20" y="0" width="160" height="160" rx="16" fill="#d1fae5"/>
+    
+    <!-- Icon -->
+    <g transform="translate(40, 20)">
+      <!-- Conveyor belt -->
+      <rect x="10" y="85" width="100" height="8" rx="4" fill="#6b7280" />
+      
+      <!-- Boxes -->
+      <g id="boxes">
+        <!-- Box 1 -->
+        <g id="box-1">
+          <rect x="20" y="50" width="25" height="25" fill="#10b981" />
+          <rect x="20" y="50" width="25" height="8" fill="#059669" />
+          <path d="M32.5 50 L32.5 75" stroke="#047857" stroke-width="2" />
+          <path d="M20 58 L45 58" stroke="#047857" stroke-width="2" />
+        </g>
+        
+        <!-- Box 2 -->
+        <g id="box-2">
+          <rect x="55" y="55" width="25" height="25" fill="#10b981" />
+          <rect x="55" y="55" width="25" height="8" fill="#059669" />
+          <path d="M67.5 55 L67.5 80" stroke="#047857" stroke-width="2" />
+          <path d="M55 63 L80 63" stroke="#047857" stroke-width="2" />
+          <!-- Label -->
+          <rect x="58" y="60" width="16" height="12" fill="#d1fae5" />
+        </g>
+        
+        <!-- Box 3 -->
+        <g id="box-3">
+          <rect x="85" y="60" width="20" height="20" fill="#10b981" />
+          <rect x="85" y="60" width="20" height="6" fill="#059669" />
+          <path d="M95 60 L95 80" stroke="#047857" stroke-width="2" />
+        </g>
+      </g>
+    </g>
+    
+    <!-- Label -->
+    <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#064e3b">Packaging</text>
+    <text x="100" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#047857">Product packing</text>
+  </g>
+  
+  <!-- Layer 4: Warehouse -->
+  <g id="layer-4-warehouse" transform="translate(960, 100)">
+    <!-- Background Card -->
+    <rect x="20" y="0" width="160" height="160" rx="16" fill="#d1fae5"/>
+    
+    <!-- Icon -->
+    <g transform="translate(40, 20)">
+      <!-- Warehouse building -->
+      <rect x="15" y="55" width="90" height="50" fill="#10b981" />
+      
+      <!-- Roof -->
+      <path d="M10 55 L60 30 L110 55 Z" fill="#059669" />
+      
+      <!-- Door -->
+      <rect x="45" y="75" width="30" height="30" fill="#047857" />
+      <rect x="58" y="75" width="4" height="30" fill="#059669" />
+      
+      <!-- Windows -->
+      <g id="windows">
+        <rect x="25" y="65" width="12" height="12" fill="#d1fae5" />
+        <rect x="83" y="65" width="12" height="12" fill="#d1fae5" />
+      </g>
+      
+      <!-- Stacked boxes inside -->
+      <g id="stacked-boxes" opacity="0.6">
+        <rect x="22" y="85" width="15" height="15" fill="#047857" />
+        <rect x="85" y="85" width="15" height="15" fill="#047857" />
+        <rect x="22" y="70" width="15" height="12" fill="#047857" />
+      </g>
+      
+      <!-- Forklift -->
+      <g id="forklift" transform="translate(30, 90)">
+        <rect x="0" y="8" width="8" height="4" fill="#6b7280" />
+        <circle cx="2" cy="14" r="2" fill="#374151" />
+        <circle cx="6" cy="14" r="2" fill="#374151" />
+      </g>
+    </g>
+    
+    <!-- Label -->
+    <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#064e3b">Warehouse</text>
+    <text x="100" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#047857">Storage &amp; distribution</text>
+  </g>
+</svg>

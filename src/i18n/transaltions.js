@@ -431,6 +431,78 @@ export const translations = {
         },
       },
     },
+    supply: {
+      intro: {
+        eyebrow: "Supply Chain Model",
+        titleMain: "From Source to Shelf,",
+        titleAccent: "Built on Precision",
+        subtitle:
+          "Our supply chain is designed to ensure transparency, hygiene, and consistency — from tribal farms to finished products.",
+
+        points: {
+          procurement: {
+            title: "Structured Procurement",
+            text: "Raw materials are sourced directly and systematically from verified tribal farming communities.",
+          },
+          processing: {
+            title: "Controlled Processing",
+            text: "District-wise processing centers ensure specialization, hygiene, and quality control at every stage.",
+          },
+          distribution: {
+            title: "Centralized Warehousing",
+            text: "Products are stored and dispatched from controlled central warehouses to maintain freshness and consistency.",
+          },
+        },
+      },
+      flow: {
+        titleMain: "How Our Supply Chain Works",
+        titleAccent: "Step by Step",
+        subtitle:
+          "Each stage of our supply chain is carefully monitored to ensure safety, consistency, and quality.",
+
+        imageAlt: "AT Millets supply chain process",
+
+        procurement: {
+          title: "Raw Material Procurement",
+          text: "Millets and raw produce are directly procured from trusted tribal farmers.",
+        },
+        processing: {
+          title: "Specialized Processing",
+          text: "District-level facilities process grains under strict hygiene controls.",
+        },
+        packaging: {
+          title: "Safe Packaging",
+          text: "Processed products are hygienically packed to preserve freshness.",
+        },
+        warehousing: {
+          title: "Central Warehousing",
+          text: "Finished goods are stored in controlled warehouses before distribution.",
+        },
+      },
+      quality: {
+        titleMain: "Quality, Hygiene & Control",
+        titleAccent: "Built Into Every Step",
+        subtitle:
+          "Our processing systems are designed to maintain safety, purity, and consistency across every batch.",
+
+        hygiene: {
+          title: "Strict Hygiene Standards",
+          text: "Controlled environments and sanitation protocols are followed at every processing stage.",
+        },
+        testing: {
+          title: "Batch-Level Testing",
+          text: "Regular quality checks ensure grains meet internal and regulatory standards.",
+        },
+        controls: {
+          title: "Process Controls",
+          text: "Documented SOPs and monitored workflows reduce variability and risk.",
+        },
+        consistency: {
+          title: "Consistent Output",
+          text: "Standardized methods ensure uniform quality across regions and seasons.",
+        },
+      },
+    },
   },
 
   TE: {
@@ -860,6 +932,78 @@ export const translations = {
         },
       },
     },
+    supply: {
+      intro: {
+        eyebrow: "సప్లై చైన్ విధానం",
+        titleMain: "మూలం నుండి మార్కెట్ వరకు,",
+        titleAccent: "నియంత్రిత వ్యవస్థలో",
+        subtitle:
+          "ట్రైబల్ రైతుల నుండి తుది ఉత్పత్తి వరకు నాణ్యత, పరిశుభ్రత మరియు పారదర్శకతను మా సప్లై చైన్ నిర్ధారిస్తుంది.",
+
+        points: {
+          procurement: {
+            title: "వ్యవస్థబద్ధమైన సేకరణ",
+            text: "ధృవీకరించబడిన ట్రైబల్ రైతుల నుండి నేరుగా ముడి పదార్థాలను సేకరిస్తాము.",
+          },
+          processing: {
+            title: "నియంత్రిత ప్రాసెసింగ్",
+            text: "జిల్లా స్థాయి ప్రాసెసింగ్ కేంద్రాలు పరిశుభ్రత మరియు నాణ్యత నియంత్రణను నిర్ధారిస్తాయి.",
+          },
+          distribution: {
+            title: "కేంద్ర గిడ్డంగులు",
+            text: "తాజాతనాన్ని నిలబెట్టేందుకు ఉత్పత్తులు కేంద్ర గిడ్డంగుల నుండి పంపిణీ చేయబడతాయి.",
+          },
+        },
+      },
+      flow: {
+        titleMain: "మా సప్లై చైన్ విధానం",
+        titleAccent: "దశల వారీగా",
+        subtitle:
+          "ప్రతి దశలో నాణ్యత మరియు పరిశుభ్రతను నిర్ధారించే విధంగా మా సప్లై చైన్ పనిచేస్తుంది.",
+
+        imageAlt: "AT మిల్లెట్స్ సప్లై చైన్ ప్రక్రియ",
+
+        procurement: {
+          title: "ముడి పదార్థాల సేకరణ",
+          text: "నమ్మకమైన ట్రైబల్ రైతుల నుండి నేరుగా మిల్లెట్స్ సేకరిస్తాము.",
+        },
+        processing: {
+          title: "ప్రత్యేక ప్రాసెసింగ్",
+          text: "జిల్లా స్థాయి కేంద్రాలలో పరిశుభ్రతతో ప్రాసెసింగ్ జరుగుతుంది.",
+        },
+        packaging: {
+          title: "సురక్షిత ప్యాకేజింగ్",
+          text: "తాజాతనాన్ని నిలబెట్టే విధంగా ప్యాకేజింగ్ చేయబడుతుంది.",
+        },
+        warehousing: {
+          title: "కేంద్ర గిడ్డంగులు",
+          text: "వితరణకు ముందు ఉత్పత్తులను కేంద్ర గిడ్డంగులలో నిల్వ చేస్తాము.",
+        },
+      },
+      quality: {
+        titleMain: "నాణ్యత, పరిశుభ్రత & నియంత్రణ",
+        titleAccent: "ప్రతి దశలో నిక్షిప్తం",
+        subtitle:
+          "ప్రతి బ్యాచ్‌లో భద్రత మరియు నాణ్యతను నిర్ధారించే విధంగా మా ప్రాసెసింగ్ వ్యవస్థలు రూపకల్పన చేయబడ్డాయి.",
+
+        hygiene: {
+          title: "కఠిన పరిశుభ్రత ప్రమాణాలు",
+          text: "ప్రతి దశలో పరిశుభ్రత మరియు శుభ్రత నియమాలు పాటించబడతాయి.",
+        },
+        testing: {
+          title: "బ్యాచ్ స్థాయి పరీక్షలు",
+          text: "నియమిత పరీక్షల ద్వారా నాణ్యతను నిర్ధారిస్తాము.",
+        },
+        controls: {
+          title: "ప్రాసెస్ నియంత్రణలు",
+          text: "ప్రామాణిక విధానాలు మార్పులను తగ్గిస్తాయి.",
+        },
+        consistency: {
+          title: "సతత నాణ్యత",
+          text: "ప్రాంతం లేదా కాలం మారినా నాణ్యత మారదు.",
+        },
+      },
+    },
   },
 
   HI: {
@@ -1286,6 +1430,78 @@ export const translations = {
             title: "जैव विविधता संरक्षण",
             text: "स्थानीय फसलें पारिस्थितिक संतुलन को बनाए रखने में मदद करती हैं।",
           },
+        },
+      },
+    },
+    supply: {
+      intro: {
+        eyebrow: "सप्लाई चेन मॉडल",
+        titleMain: "स्रोत से बाज़ार तक,",
+        titleAccent: "सटीक प्रणाली के साथ",
+        subtitle:
+          "हमारी सप्लाई चेन ट्राइबल किसानों से लेकर अंतिम उत्पाद तक गुणवत्ता और पारदर्शिता सुनिश्चित करती है।",
+
+        points: {
+          procurement: {
+            title: "संरचित खरीद",
+            text: "सत्यापित ट्राइबल किसानों से कच्चा माल सीधे और व्यवस्थित रूप से प्राप्त किया जाता है।",
+          },
+          processing: {
+            title: "नियंत्रित प्रोसेसिंग",
+            text: "जिला-स्तरीय प्रोसेसिंग केंद्र स्वच्छता और गुणवत्ता नियंत्रण सुनिश्चित करते हैं।",
+          },
+          distribution: {
+            title: "केंद्रीकृत भंडारण",
+            text: "उत्पादों को केंद्रीय गोदामों में संग्रहित कर सुरक्षित रूप से वितरित किया जाता है।",
+          },
+        },
+      },
+      flow: {
+        titleMain: "हमारी सप्लाई चेन प्रक्रिया",
+        titleAccent: "चरण दर चरण",
+        subtitle:
+          "हर चरण में गुणवत्ता और स्वच्छता को सख्ती से बनाए रखा जाता है।",
+
+        imageAlt: "AT मिलेट्स सप्लाई चेन प्रक्रिया",
+
+        procurement: {
+          title: "कच्चे माल की खरीद",
+          text: "विश्वसनीय ट्राइबल किसानों से सीधे मिलेट्स खरीदे जाते हैं।",
+        },
+        processing: {
+          title: "विशेष प्रोसेसिंग",
+          text: "जिला स्तर की यूनिट्स में स्वच्छता के साथ प्रोसेसिंग होती है।",
+        },
+        packaging: {
+          title: "सुरक्षित पैकेजिंग",
+          text: "ताजगी बनाए रखने के लिए सुरक्षित पैकेजिंग की जाती है।",
+        },
+        warehousing: {
+          title: "केंद्रीकृत भंडारण",
+          text: "वितरण से पहले उत्पादों को नियंत्रित गोदामों में रखा जाता है।",
+        },
+      },
+      quality: {
+        titleMain: "गुणवत्ता, स्वच्छता और नियंत्रण",
+        titleAccent: "हर चरण में समाहित",
+        subtitle:
+          "हमारी प्रोसेसिंग प्रणाली हर बैच में सुरक्षा और गुणवत्ता सुनिश्चित करती है।",
+
+        hygiene: {
+          title: "कठोर स्वच्छता मानक",
+          text: "हर चरण में स्वच्छता और सैनिटेशन प्रोटोकॉल का पालन किया जाता है।",
+        },
+        testing: {
+          title: "बैच स्तर परीक्षण",
+          text: "नियमित परीक्षण से गुणवत्ता सुनिश्चित की जाती है।",
+        },
+        controls: {
+          title: "प्रोसेस नियंत्रण",
+          text: "मानकीकृत प्रक्रियाएँ जोखिम को कम करती हैं।",
+        },
+        consistency: {
+          title: "समान गुणवत्ता",
+          text: "हर क्षेत्र और मौसम में एक समान आउटपुट।",
         },
       },
     },

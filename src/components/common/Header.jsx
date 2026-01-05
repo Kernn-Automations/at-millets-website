@@ -55,8 +55,7 @@ const Header = () => {
         { label: t("nav.about"), path: "/about" },
         { label: t("nav.sourcing"), path: "/sourcing" },
         { label: t("nav.supply"), path: "/supply" },
-        { label: t("nav.packaging"), path: "/packaging" },
-        { label: t("nav.quality"), path: "/quality" },
+        //{ label: t("nav.packaging"), path: "/packaging" },
       ],
     },
     products: {
@@ -64,8 +63,6 @@ const Header = () => {
       label: t("nav.products"),
       items: [
         { label: t("nav.allProducts"), path: "/products" },
-        { label: t("nav.millets"), path: "/millets" },
-        { label: t("nav.spices"), path: "/spices" },
         { label: t("nav.recipes"), path: "/recipes" },
       ],
     },
@@ -74,7 +71,6 @@ const Header = () => {
       label: t("nav.business"),
       items: [
         { label: t("nav.franchise"), path: "/franchise" },
-        { label: t("nav.bulk"), path: "/bulk" },
         { label: t("nav.contact"), path: "/contact" },
       ],
     },
