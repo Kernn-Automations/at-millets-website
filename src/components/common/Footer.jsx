@@ -1,20 +1,26 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import {
+  Leaf,
+  MapPin,
+  Phone,
+  Mail,
+  Facebook,
+  Instagram,
+  Youtube,
+  Heart,
+} from "lucide-react";
 
 /* =========================================================
-   RESPONSIVE FOOTER – WHITE & GREEN PREMIUM THEME
+   MINIMAL PREMIUM FOOTER – WHITE & GREEN THEME
 ========================================================= */
 
 const Footer = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      const width = window.innerWidth;
-      setIsMobile(width <= 767);
-      setIsTablet(width > 767 && width <= 1023);
+      setIsMobile(window.innerWidth <= 768);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -23,136 +29,107 @@ const Footer = () => {
 
   return (
     <footer style={styles.footer}>
-      {/* soft green background texture */}
+      {/* Animated background pattern */}
       <div style={styles.bgPattern} />
+      <div style={styles.bgOverlay} />
 
-      <div
-        style={{
-          ...styles.container,
-          gridTemplateColumns: isMobile
-            ? "1fr"
-            : isTablet
-            ? "1fr 1fr"
-            : "1.4fr 2fr 1.2fr",
-          gap: isMobile ? 40 : 56,
-          textAlign: isMobile ? "center" : "left",
-        }}
-      >
-        {/* BRAND */}
+      <div style={styles.container}>
+        {/* BRAND & TAGLINE */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          style={{
-            ...styles.brandSection,
-            margin: isMobile ? "0 auto" : 0,
-          }}
+          transition={{ duration: 0.4 }}
+          style={styles.brandSection}
         >
-          <div
-            style={{
-              ...styles.brandHeader,
-              justifyContent: isMobile ? "center" : "flex-start",
-            }}
-          >
-            <span style={styles.brandIcon}>🌾</span>
-            <span style={styles.brandName}>AT Millets</span>
+          <div style={styles.brandHeader}>
+            <div style={styles.iconWrapper}>
+              <Leaf size={32} strokeWidth={2.5} style={styles.leafIcon} />
+            </div>
+            <h2 style={styles.brandName}>AT Millets</h2>
           </div>
-
-          <p style={styles.brandDescription}>
-            Premium millets and natural foods sourced responsibly from tribal
-            farmers of Araku Valley.
+          <p style={styles.tagline}>
+            Premium millets and natural foods from Araku Valley's tribal farmers
           </p>
-
-          <p style={styles.brandTagline}>Rooted in Nature • Built on Trust</p>
+          <div style={styles.badge}>
+            <span style={styles.badgeText}>
+              Rooted in Nature • Built on Trust
+            </span>
+          </div>
         </motion.div>
 
-        {/* LINKS */}
+        {/* CONTACT INFO */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1, duration: 0.7 }}
-          style={{
-            ...styles.linksSection,
-            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
-          }}
+          transition={{ duration: 0.4, delay: 0.05 }}
+          style={styles.contactGrid}
         >
-          <FooterColumn
-            title="Company"
-            links={[
-              ["About Us", "/about"],
-              ["Tribal Sourcing", "/sourcing"],
-              ["Supply Chain", "/supply-chain"],
-              ["Packaging", "/packaging"],
-              ["Quality Standards", "/quality"],
-            ]}
-            center={isMobile}
-          />
-
-          <FooterColumn
-            title="Products"
-            links={[
-              ["All Products", "/products"],
-              ["Millets Collection", "/millets"],
-              ["Spices & Naturals", "/spices"],
-              ["Recipes & Usage", "/recipes"],
-            ]}
-            center={isMobile}
-          />
-
-          <FooterColumn
-            title="Business"
-            links={[
-              ["Franchise Opportunity", "/franchise"],
-              ["Bulk Orders", "/bulk"],
-              ["Contact Us", "/contact"],
-            ]}
-            center={isMobile}
-          />
+          <div style={styles.contactItem}>
+            <MapPin size={20} style={styles.contactIcon} />
+            <span style={styles.contactText}>Araku Valley, Andhra Pradesh</span>
+          </div>
+          <div style={styles.contactItem}>
+            <Phone size={20} style={styles.contactIcon} />
+            <span style={styles.contactText}>+91 XXXXX XXXXX</span>
+          </div>
+          <div style={styles.contactItem}>
+            <Mail size={20} style={styles.contactIcon} />
+            <span style={styles.contactText}>info@atmillets.com</span>
+          </div>
         </motion.div>
 
-        {/* CONTACT */}
+        {/* SOCIAL MEDIA */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          style={{
-            ...styles.contactSection,
-            textAlign: isMobile ? "center" : "left",
-          }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          style={styles.socialSection}
         >
-          <h4 style={styles.columnTitle}>Get in Touch</h4>
-
-          <p style={styles.contactItem}>📍 Araku Valley, Andhra Pradesh</p>
-          <p style={styles.contactItem}>📞 +91 XXXXX XXXXX</p>
-          <p style={styles.contactItem}>✉️ info@atmillets.com</p>
-
-          <Link
-            to="/franchise"
-            style={{
-              ...styles.footerCta,
-              margin: isMobile ? "18px auto 0" : "18px 0 0",
-            }}
-          >
-            Become a Franchise Partner →
-          </Link>
+          <h3 style={styles.socialTitle}>Connect With Us</h3>
+          <div style={styles.socialLinks}>
+            <SocialLink
+              href="https://www.facebook.com/people/AT-Millets-Araku-Naturals/61585507244152/"
+              icon={<Facebook size={22} />}
+              label="Facebook"
+            />
+            <SocialLink
+              href="https://instagram.com/atmillets"
+              icon={<Instagram size={22} />}
+              label="Instagram"
+            />
+            <SocialLink
+              href="https://www.youtube.com/@ATMilletsArakuNaturals"
+              icon={<Youtube size={22} />}
+              label="YouTube"
+            />
+          </div>
         </motion.div>
       </div>
 
       {/* BOTTOM BAR */}
-      <div
-        style={{
-          ...styles.bottomBar,
-          flexDirection: isMobile ? "column" : "row",
-        }}
-      >
-        <span>
-          © {new Date().getFullYear()} AT Millets Araku Naturals Pvt. Ltd.
-        </span>
-        {!isMobile && <span style={styles.bottomDivider}>•</span>}
-        <span>All rights reserved</span>
+      <div style={styles.bottomBar}>
+        <p style={styles.copyright}>
+          © {new Date().getFullYear()} AT Millets Araku Naturals Pvt. Ltd. All
+          rights reserved.
+        </p>
+        <div style={styles.madeWith}>
+          <span style={styles.madeWithText}>Made with</span>
+          <Heart size={14} style={styles.heartIcon} fill="#ef4444" />
+          <span style={styles.madeWithText}>by</span>
+          <a
+            href="https://kernn.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.kernLink}
+            onMouseEnter={(e) => (e.target.style.color = "#3c8b65")}
+            onMouseLeave={(e) => (e.target.style.color = "#0d2817")}
+          >
+            Kernn Automations
+          </a>
+        </div>
       </div>
     </footer>
   );
@@ -160,36 +137,33 @@ const Footer = () => {
 
 export default Footer;
 
-/* ---------------- FOOTER COLUMN ---------------- */
+/* ---------------- SOCIAL LINK COMPONENT ---------------- */
 
-const FooterColumn = ({ title, links, center }) => (
-  <div style={{ textAlign: center ? "center" : "left" }}>
-    <h4 style={styles.columnTitle}>{title}</h4>
-    <ul style={styles.linkList}>
-      {links.map(([label, path]) => (
-        <motion.li
-          key={path}
-          whileHover={{ x: center ? 0 : 6 }}
-          transition={{ type: "spring", stiffness: 300, damping: 22 }}
-        >
-          <Link to={path} style={styles.footerLink}>
-            {label}
-          </Link>
-        </motion.li>
-      ))}
-    </ul>
-  </div>
+const SocialLink = ({ href, icon, label }) => (
+  <motion.a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    style={styles.socialButton}
+    whileHover={{ scale: 1.1, y: -4 }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+    aria-label={label}
+  >
+    {icon}
+  </motion.a>
 );
 
 /* =========================================================
-   STYLES – WHITE & GREEN PREMIUM
+   STYLES – MINIMAL PREMIUM WHITE & GREEN
 ========================================================= */
 
 const styles = {
   footer: {
     position: "relative",
-    background: "linear-gradient(180deg,#ffffff 0%,#f9fdfb 55%,#f2faf6 100%)",
-    borderTop: "1px solid rgba(60,139,101,0.15)",
+    background:
+      "linear-gradient(180deg, #ffffff 0%, #f8fcfa 50%, #f0faf5 100%)",
+    borderTop: "2px solid rgba(60,139,101,0.12)",
     overflow: "hidden",
   },
 
@@ -197,7 +171,15 @@ const styles = {
     position: "absolute",
     inset: 0,
     background:
-      "radial-gradient(circle at 20% 20%, rgba(120,194,154,0.12), transparent 45%), radial-gradient(circle at 80% 80%, rgba(60,139,101,0.1), transparent 45%)",
+      "radial-gradient(circle at 15% 25%, rgba(120,194,154,0.15), transparent 50%), radial-gradient(circle at 85% 75%, rgba(60,139,101,0.12), transparent 50%)",
+    pointerEvents: "none",
+  },
+
+  bgOverlay: {
+    position: "absolute",
+    inset: 0,
+    backgroundImage:
+      "repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(60,139,101,0.02) 2px, rgba(60,139,101,0.02) 4px)",
     pointerEvents: "none",
   },
 
@@ -205,116 +187,187 @@ const styles = {
     position: "relative",
     maxWidth: 1280,
     margin: "0 auto",
-    padding: "80px 32px 60px",
-    display: "grid",
+    padding: "80px 32px 48px",
+    display: "flex",
+    flexDirection: "column",
+    gap: 56,
+    alignItems: "center",
+    textAlign: "center",
     zIndex: 1,
   },
 
-  /* BRAND */
+  /* BRAND SECTION */
   brandSection: {
-    maxWidth: 420,
+    maxWidth: 640,
   },
 
   brandHeader: {
     display: "flex",
     alignItems: "center",
-    gap: 12,
-    marginBottom: 18,
+    justifyContent: "center",
+    gap: 16,
+    marginBottom: 20,
   },
 
-  brandIcon: {
-    fontSize: "1.9rem",
+  iconWrapper: {
+    width: 64,
+    height: 64,
+    borderRadius: "50%",
+    background: "linear-gradient(135deg, #3c8b65, #2d7a54)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    boxShadow:
+      "0 12px 40px rgba(60,139,101,0.3), 0 4px 12px rgba(60,139,101,0.2)",
+  },
+
+  leafIcon: {
+    color: "#ffffff",
   },
 
   brandName: {
-    fontSize: "1.6rem",
+    fontSize: "2.5rem",
     fontWeight: 900,
-    background: "linear-gradient(135deg,#2d7a54,#3c8b65,#78c29a)",
+    margin: 0,
+    background: "linear-gradient(135deg, #2d7a54, #3c8b65, #78c29a)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
+    letterSpacing: "-0.02em",
   },
 
-  brandDescription: {
-    fontSize: "0.95rem",
+  tagline: {
+    fontSize: "1.1rem",
     lineHeight: 1.7,
     color: "#3f5f4f",
-    marginBottom: 14,
+    marginBottom: 24,
+    fontWeight: 400,
   },
 
-  brandTagline: {
-    fontSize: "0.75rem",
+  badge: {
+    display: "inline-block",
+    padding: "12px 28px",
+    background:
+      "linear-gradient(135deg, rgba(60,139,101,0.08), rgba(120,194,154,0.12))",
+    borderRadius: 50,
+    border: "1.5px solid rgba(60,139,101,0.2)",
+  },
+
+  badgeText: {
+    fontSize: "0.8rem",
     fontWeight: 700,
-    letterSpacing: "0.14em",
+    letterSpacing: "0.12em",
     textTransform: "uppercase",
     color: "#3c8b65",
   },
 
-  /* LINKS */
-  linksSection: {
-    display: "grid",
-    gap: 36,
+  /* CONTACT SECTION */
+  contactGrid: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 32,
+    justifyContent: "center",
+    alignItems: "flex-start",
   },
 
-  columnTitle: {
-    fontSize: "0.9rem",
+  contactItem: {
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+    padding: "12px 24px",
+    background: "rgba(255,255,255,0.6)",
+    borderRadius: 16,
+    border: "1px solid rgba(60,139,101,0.15)",
+    backdropFilter: "blur(10px)",
+    transition: "all 0.3s ease",
+  },
+
+  contactIcon: {
+    color: "#3c8b65",
+    strokeWidth: 2,
+    flexShrink: 0,
+  },
+
+  contactText: {
+    fontSize: "0.95rem",
+    color: "#2d4a3d",
+    fontWeight: 500,
+  },
+
+  /* SOCIAL SECTION */
+  socialSection: {
+    width: "100%",
+    maxWidth: 500,
+  },
+
+  socialTitle: {
+    fontSize: "1rem",
     fontWeight: 800,
-    marginBottom: 18,
     color: "#0d2817",
+    marginBottom: 24,
     letterSpacing: "0.04em",
     textTransform: "uppercase",
   },
 
-  linkList: {
-    listStyle: "none",
-    padding: 0,
-    margin: 0,
+  socialLinks: {
+    display: "flex",
+    gap: 20,
+    justifyContent: "center",
   },
 
-  footerLink: {
-    fontSize: "0.9rem",
-    color: "#4f6f5f",
-    textDecoration: "none",
-    padding: "6px 0",
-    display: "inline-block",
-    transition: "color 0.2s ease",
-  },
-
-  /* CONTACT */
-  contactSection: {},
-
-  contactItem: {
-    fontSize: "0.9rem",
-    color: "#3f5f4f",
-    marginBottom: 10,
-  },
-
-  footerCta: {
-    display: "inline-block",
-    padding: "14px 24px",
-    background: "linear-gradient(135deg,#3c8b65,#2d7a54)",
+  socialButton: {
+    width: 56,
+    height: 56,
+    borderRadius: "50%",
+    background: "linear-gradient(135deg, #3c8b65, #2d7a54)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     color: "#ffffff",
-    borderRadius: 14,
-    fontSize: "0.9rem",
-    fontWeight: 700,
     textDecoration: "none",
-    boxShadow: "0 10px 30px rgba(60,139,101,0.35)",
-    transition: "transform 0.25s ease",
+    boxShadow:
+      "0 8px 24px rgba(60,139,101,0.3), 0 2px 8px rgba(60,139,101,0.2)",
+    transition: "all 0.3s ease",
+    cursor: "pointer",
   },
 
   /* BOTTOM BAR */
   bottomBar: {
-    borderTop: "1px solid rgba(60,139,101,0.18)",
-    padding: "18px 24px",
-    fontSize: "0.8rem",
-    color: "#5f8f75",
+    borderTop: "1px solid rgba(60,139,101,0.15)",
+    padding: "24px 32px",
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "column",
     alignItems: "center",
     gap: 8,
-    flexWrap: "wrap",
   },
 
-  bottomDivider: {
-    opacity: 0.6,
+  copyright: {
+    fontSize: "0.85rem",
+    color: "#5f8f75",
+    margin: 0,
+    fontWeight: 500,
+  },
+
+  madeWith: {
+    display: "flex",
+    alignItems: "center",
+    gap: 6,
+    fontSize: "0.85rem",
+  },
+
+  madeWithText: {
+    color: "#5f8f75",
+  },
+
+  heartIcon: {
+    color: "#ef4444",
+    strokeWidth: 0,
+  },
+
+  kernLink: {
+    color: "#0d2817",
+    fontWeight: 700,
+    textDecoration: "none",
+    transition: "color 0.2s ease",
+    cursor: "pointer",
   },
 };
