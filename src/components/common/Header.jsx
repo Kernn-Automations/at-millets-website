@@ -69,7 +69,7 @@ const Header = () => {
       label: t("nav.business"),
       items: [
         { label: t("nav.franchise"), path: "/franchise" },
-        { label: t("nav.contact"), path: "/contact" },
+        //{ label: t("nav.contact"), path: "/contact" },
       ],
     },
   };
@@ -125,14 +125,15 @@ const Header = () => {
                           style={styles.dropdown}
                         >
                           {data.items.map((item) => (
-                            <a
+                            <motion.a
                               key={item.label}
                               href={item.path}
                               style={styles.dropdownLink}
+                              whileHover={leafHover}
                             >
-                              {item.label}
+                              <span>{item.label}</span>
                               <ArrowRight size={14} />
-                            </a>
+                            </motion.a>
                           ))}
                         </motion.div>
                       )}
@@ -236,6 +237,14 @@ const Header = () => {
       </AnimatePresence>
     </>
   );
+};
+
+/* ---------- LEAF HOVER ---------- */
+const leafHover = {
+  background:
+    "linear-gradient(135deg,#3c8b65,#2f6f4e),repeating-linear-gradient(30deg,rgba(255,255,255,0.18) 0 1px,transparent 6px)",
+  color: "#fff",
+  borderRadius: "14px 28px",
 };
 
 /* ===== LANGUAGE PILL ===== */
