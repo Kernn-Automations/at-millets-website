@@ -159,7 +159,7 @@ export const translations = {
           },
           sustainability: {
             title: "Sustainability",
-            desc: "Organic farming practices adopted",
+            desc: "Natural farming practices adopted",
           },
           technology: {
             title: "Technology",
@@ -238,7 +238,7 @@ export const translations = {
         badges: {
           title: "Certifications & Standards",
           fssai: "FSSAI Certified",
-          organic: "Organic Practices",
+          organic: "Natural Practices",
           lab: "Lab Tested",
           gmp: "Good Manufacturing Practices",
           trace: "Traceable Supply Chain",
@@ -634,7 +634,7 @@ export const translations = {
             title: "Telangana",
             people: [
               "Krishna Urugonda – 9885558222",
-              "Kavitha Gandhi – 8897265146",
+              "Kavitha Gandhi Vanguri – 8897265146",
               "Raghuram Nama – 9989087740",
             ],
           },
@@ -1284,7 +1284,7 @@ export const translations = {
             title: "తెలంగాణ",
             people: [
               "కృష్ణ ఉరుగొండ – 9885558222",
-              "కవిత గాంధీ – 8897265146",
+              "కవిత గాంధీ వంగూరి – 8897265146",
               "రఘురామ్ నామ – 9989087740",
             ],
           },
@@ -1934,7 +1934,7 @@ export const translations = {
             title: "तेलंगाना",
             people: [
               "कृष्णा उरुगोंडा – 9885558222",
-              "कविता गांधी – 8897265146",
+              "कविता गांधी वंगूरी – 8897265146",
               "रघुराम नामा – 9989087740",
             ],
           },
