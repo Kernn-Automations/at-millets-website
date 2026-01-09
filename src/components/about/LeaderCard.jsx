@@ -111,32 +111,7 @@ const LeaderCard = ({ leader = {} }) => {
   );
 };
 
-// Demo with sample data
-export default function App() {
-  const sampleLeader = {
-    name: "Sarah Chen",
-    designation: "Chief Technology Officer",
-    email: "sarah.chen@company.com",
-    linkedin: "https://linkedin.com",
-    photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop",
-    bio: "Sarah is an innovative technology leader with over 15 years of experience in software engineering and digital transformation. She has led multiple successful initiatives in cloud architecture, AI integration, and scalable platform development across Fortune 500 companies.",
-  };
-
-  return (
-    <div
-      style={{
-        padding: 40,
-        maxWidth: 400,
-        margin: "0 auto",
-        background: "#f9fafb",
-        minHeight: "100vh",
-      }}
-    >
-      <LeaderCard leader={sampleLeader} />
-    </div>
-  );
-}
+export default LeaderCard;
 
 /* ================= STYLES ================= */
 

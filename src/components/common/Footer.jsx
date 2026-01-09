@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "../../i18n/LanguageContext";
+import { Leaf, MapPin, Phone } from "lucide-react";
+
 import {
-  Leaf,
-  MapPin,
-  Phone,
-  Facebook,
-  Instagram,
-  Youtube,
-} from "lucide-react";
+  FaYoutube as Youtube,
+  FaFacebookF as Facebook,
+  FaInstagram as Instagram,
+} from "react-icons/fa";
+
+import { FaXTwitter as Twitter } from "react-icons/fa6";
 
 /* =========================================================
    PREMIUM FOOTER WITH REGIONAL CONTACTS
@@ -201,6 +202,12 @@ const Footer = () => {
               style={styles.youtube}
               icon={<Youtube size={22} />}
               label="YouTube"
+            />
+            <SocialLink
+              href="https://www.x.com/atmillets"
+              style={styles.twitter}
+              icon={<Twitter size={22} />}
+              label="Twitter"
             />
           </div>
         </motion.div>
@@ -422,6 +429,10 @@ const styles = {
 
   youtube: {
     background: "#FF0000",
+  },
+
+  twitter: {
+    background: "black",
   },
 
   bottomBar: {
