@@ -16,6 +16,7 @@ import Franchise from "../pages/Franchise/Franchise";
 import Quality from "../pages/Quality/Quality";
 import Recipes from "../pages/Recipes/Recipes";
 import Contact from "../pages/Contact/Contact";
+import NotFound from "../components/common/NotFound";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -113,11 +114,19 @@ const AppRoutes = () => {
           }
         />
 
-        <Route
+        {/* <Route
           path="/contact"
           element={
             <PageTransition>
               <Contact />
+            </PageTransition>
+          }
+        /> */}
+        <Route
+          path="*"
+          element={
+            <PageTransition>
+              <NotFound />
             </PageTransition>
           }
         />
