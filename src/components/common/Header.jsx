@@ -50,19 +50,23 @@ const Header = () => {
     const darkSections = document.querySelectorAll("[data-dark]");
     if (!darkSections.length) return;
 
+    let darkVisibleCount = 0;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setOnDarkBg(true);
+            darkVisibleCount++;
           } else {
-            setOnDarkBg(false);
+            darkVisibleCount--;
           }
         });
+
+        setOnDarkBg(darkVisibleCount > 0);
       },
       {
-        rootMargin: "-80px 0px -80% 0px", // header height aware
-        threshold: 0.1,
+        rootMargin: "-80px 0px -60% 0px",
+        threshold: 0.15,
       }
     );
 
@@ -70,6 +74,22 @@ const Header = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const headerTheme = onDarkBg
+    ? {
+        text: "#ffffff",
+        subText: "#d1fae5",
+        border: "rgba(255,255,255,0.28)",
+        hoverBg: "rgba(255,255,255,0.12)",
+        dropdownBg: "#0f1f1a",
+      }
+    : {
+        text: "#1a1a1a",
+        subText: "#1a5a3a",
+        border: "rgba(0,0,0,0.12)",
+        hoverBg: "rgba(0,0,0,0.06)",
+        dropdownBg: "#ffffff",
+      };
 
   /* ---------- BODY LOCK ---------- */
   useEffect(() => {
@@ -151,7 +171,12 @@ const Header = () => {
                     onMouseEnter={() => setActiveNav(key)}
                     onMouseLeave={() => setActiveNav(null)}
                   >
-                    <button style={styles.navButton}>
+                    <button
+                      style={{
+                        ...styles.navButton,
+                        color: headerTheme.text,
+                      }}
+                    >
                       <Icon size={16} />
                       <span>{data.label}</span>
                       <ChevronDown size={14} />
@@ -163,13 +188,19 @@ const Header = () => {
                           initial={{ opacity: 0, y: 6 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 6 }}
-                          style={styles.dropdown}
+                          style={{
+                            ...styles.dropdown,
+                            background: headerTheme.dropdownBg,
+                          }}
                         >
                           {data.items.map((item) => (
                             <motion.a
                               key={item.label}
                               href={item.path}
-                              style={styles.dropdownLink}
+                              style={{
+                                ...styles.dropdownLink,
+                                color: headerTheme.text,
+                              }}
                               whileHover={leafHover}
                             >
                               <span>{item.label}</span>
@@ -194,7 +225,13 @@ const Header = () => {
                 onMouseEnter={() => setLangOpen(true)}
                 onMouseLeave={() => setLangOpen(false)}
               >
-                <button style={styles.langButton}>
+                <button
+                  style={{
+                    ...styles.langButton,
+                    color: headerTheme.text,
+                    border: `1px solid ${headerTheme.border}`,
+                  }}
+                >
                   <Globe size={14} />
                   <span>{getLangLabel(lang)}</span>
                   <ChevronDown size={12} />
@@ -229,7 +266,11 @@ const Header = () => {
             {/* MOBILE TOGGLE */}
             {isMobile && (
               <button
-                style={styles.mobileToggle}
+                style={{
+                  ...styles.mobileToggle,
+                  color: headerTheme.text,
+                  border: `1px solid ${headerTheme.border}`,
+                }}
                 onClick={() => setMobileOpen((v) => !v)}
               >
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}

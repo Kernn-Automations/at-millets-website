@@ -3,7 +3,7 @@ import { useLanguage } from "../../i18n/LanguageContext";
 import { Users, GraduationCap, TrendingUp, HeartHandshake } from "lucide-react";
 import { useMediaQuery } from "react-responsive";
 
-import empowermentImage from "../../assets/images/farmer_empowerment.jpg";
+import empowermentImage from "../../assets/images/farmer_empowerment.png";
 
 /* =========================================================
    FARMER EMPOWERMENT & FAIR TRADE (RESPONSIVE FIXED)

@@ -22,18 +22,21 @@ const leadersData = [
     designation: "Managing Director",
     photo: raghavendra,
     email: "Shivaraghu46b@gmail.com",
+    bio: "Raghavendra is the Managing Director of AT Millets Araku Naturals and Sri Chakra Industries, bringing together expertise in agri-based enterprises, infrastructure contracting, and sustainable business operations. A natural practices farmer by foundation, he strongly believes in chemical-free cultivation and responsible food systems rooted in traditional farming values. Alongside his agricultural initiatives, he is an experienced railway contractor, known for disciplined execution, operational efficiency, and long-term project management. During the COVID-19 pandemic, he played an active role in supporting communities in need by extending timely assistance and essential support to numerous individuals and families.\n\nWith a leadership style grounded in integrity and service, Raghavendra combines business acumen with social responsibility. His vision focuses on building resilient, ethical enterprises that support farmers, create employment, and deliver trusted, high-quality products, while continuing to contribute meaningfully to society.",
   },
   {
     name: "Raghuram Nama",
     designation: "Managing Director",
     photo: raghuram,
     email: "raghurammsw3@gmail.com",
+    bio: "Raghuram Nama holds a Master of Social Work degree from Palamuru University, Mahabubnagar (2012). He brings over seven years of dedicated field experience in social development, having worked extensively in child protection, community welfare, and advocacy programs. He served for five years as a Project Coordinator with CHILDLINE–1098 in the Khammam district, where he played a key role in safeguarding vulnerable children, coordinating emergency responses, and working closely with government bodies, NGOs, and local communities. He further strengthened his impact by working for two years as a Program Officer with the Girls Advocacy Alliance in Khammam, contributing to initiatives focused on girls’ rights, education, and empowerment. Known for his grassroots approach, empathetic leadership, and strong program management skills, Raghuram Nama is deeply committed to social justice and community upliftment. His work reflects a strong belief in inclusive development, ethical leadership, and creating sustainable change through collaboration and service.",
   },
   {
     name: "Kavitha Gandhi Vanguri",
     designation: "Managing Director",
     photo: kavitha,
     email: "kavithagandhi.vanguri@gmail.com",
+    bio: "Vanguri Kavitha Gandhi is an entrepreneur and director specializing in millet-based food processing and healthy nutrition solutions. With over five years of hands-on farming experience, she brings strong field-level knowledge into developing sugar-free, natural, and value-added millet products. She oversees end-to-end operations across millet flour, rava, ready-to-cook, and ready-to-eat segments, including sourcing, processing, quality control, packaging, and branding. Driven by a farm-to-home vision, she focuses on building sustainable food brands that empower farmers and promote nutritious living.",
   },
   {
     name: "Amara Mohan Rao",

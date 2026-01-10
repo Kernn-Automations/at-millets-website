@@ -27,15 +27,17 @@ const LeaderCard = ({ leader = {} }) => {
       whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(60,139,101,0.15)" }}
       style={styles.card}
     >
-      {/* IMAGE */}
+      {/* ROUNDED IMAGE */}
       <div style={styles.imageWrapper}>
-        {photo ? (
-          <img src={photo} alt={name} style={styles.image} />
-        ) : (
-          <div style={styles.placeholder}>
-            <User size={48} />
-          </div>
-        )}
+        <div style={styles.imageCircle}>
+          {photo ? (
+            <img src={photo} alt={name} style={styles.image} />
+          ) : (
+            <div style={styles.placeholder}>
+              <User size={64} />
+            </div>
+          )}
+        </div>
       </div>
 
       {/* CONTENT */}
@@ -129,20 +131,31 @@ const styles = {
   },
 
   imageWrapper: {
-    height: 280,
+    padding: "40px 24px 20px",
     background: "linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     position: "relative",
+  },
+
+  imageCircle: {
+    width: 200,
+    height: 200,
+    borderRadius: "50%",
     overflow: "hidden",
+    border: "4px solid #ffffff",
+    boxShadow: "0 8px 24px rgba(60,139,101,0.2), 0 4px 12px rgba(0,0,0,0.1)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#ffffff",
   },
 
   image: {
     width: "100%",
     height: "100%",
-    objectFit: "contain",
-    padding: 16,
+    objectFit: "cover",
     transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
   },
 
