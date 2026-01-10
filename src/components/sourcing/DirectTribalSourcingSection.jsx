@@ -9,7 +9,7 @@ import { useMediaQuery } from "react-responsive";
 
 const farmer1 = "https://cdn.atmillets.com/media/images/tribal_farmer_1.jpg";
 const farmer2 = "https://cdn.atmillets.com/media/images/tribal_farmer_2.jpg";
-const millet = "https://cdn.atmillets.com/media/images/millets_closeup.jpg";
+const millet = "https://cdn.atmillets.com/media/images/millets_closeup1.jpg";
 
 const IMAGES = [
   { id: 1, src: farmer1 },
