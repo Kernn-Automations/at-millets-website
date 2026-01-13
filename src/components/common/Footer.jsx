@@ -224,6 +224,18 @@ const Footer = () => {
         <p style={styles.copyright}>
           © {new Date().getFullYear()} AT Millets Araku Naturals Pvt. Ltd. All
           rights reserved.
+          {" "}|{" "}
+    <span>
+      Powered by{" "}
+      <a
+        href="https://kernn.ai"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={styles.kernnLink}
+      >
+        Kernn Automations
+      </a>
+    </span>
         </p>
       </div>
     </footer>
@@ -259,6 +271,16 @@ const styles = {
     borderTop: "2px solid rgba(60,139,101,0.12)",
     overflow: "hidden",
   },
+  kernnLink: {
+  color: "#a92427",
+  textDecoration: "none",
+  fontWeight: 500,
+  transition: "opacity 0.3s ease",
+},
+kernnLinkHover: {
+  opacity: 0.8,
+},
+
 
   bgPattern: {
     position: "absolute",
