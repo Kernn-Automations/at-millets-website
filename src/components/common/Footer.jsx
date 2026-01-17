@@ -145,7 +145,13 @@ const Footer = () => {
 
               <div style={{ ...styles.regionPeople, zIndex: 1 }}>
                 {region.people.map((entry, idx) => {
-                  const [name, phone] = entry.split("–").map((s) => s.trim());
+                  const [namePart, phonePart] = entry
+                    .split("–")
+                    .map((s) => s.trim());
+
+                  const phones = phonePart
+                    ? phonePart.split(",").map((p) => p.trim())
+                    : [];
 
                   return (
                     <div key={idx} style={styles.contactItem}>
@@ -155,18 +161,23 @@ const Footer = () => {
                           color: getTextColor(i),
                         }}
                       >
-                        {name}
+                        {namePart}
                       </span>
-                      <a
-                        href={`tel:${phone}`}
-                        style={{
-                          ...styles.contactPhone,
-                          color: getTextColor(i),
-                        }}
-                      >
-                        <Phone size={14} />
-                        {phone}
-                      </a>
+                      <div style={styles.phoneGroup}>
+                        {phones.map((phone, pIdx) => (
+                          <a
+                            key={pIdx}
+                            href={`tel:${phone}`}
+                            style={{
+                              ...styles.phone,
+                              color: getTextColor(i),
+                            }}
+                            aria-label={`Call ${namePart}`}
+                          >
+                            {phone}
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   );
                 })}
@@ -477,5 +488,11 @@ kernnLinkHover: {
   copyright: {
     fontSize: "0.85rem",
     color: "#5f8f75",
+  },
+  phoneGroup: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    gap: 4,
   },
 };
