@@ -1,6 +1,7 @@
 // src/i18n/translations.js
 
 import { products } from "../data/products";
+import { brochure } from "./brochure";
 
 export const translations = {
   EN: {
@@ -10,6 +11,7 @@ export const translations = {
       company: "Company",
       products: "Products",
       business: "Business",
+      brochure: "Brochure",
       about: "About Us",
       sourcing: "Sourcing",
       supply: "Supply Chain",
@@ -652,6 +654,7 @@ export const translations = {
         },
       },
     },
+     ...brochure.EN,
   },
 
   TE: {
@@ -660,6 +663,7 @@ export const translations = {
       company: "కంపెనీ",
       products: "ఉత్పత్తులు",
       business: "వ్యాపారం",
+      brochure: "కరపత్రం",
       about: "మా గురించి",
       sourcing: "రైతుల సేకరణ",
       supply: "సరఫరా వ్యవస్థ",
@@ -1300,6 +1304,7 @@ export const translations = {
         },
       },
     },
+     ...brochure.TE,
   },
 
   HI: {
@@ -1308,6 +1313,7 @@ export const translations = {
       company: "कंपनी",
       products: "उत्पाद",
       business: "व्यवसाय",
+      brochure: "विवरणिका",
       about: "हमारे बारे में",
       sourcing: "किसान सोर्सिंग",
       supply: "आपूर्ति श्रृंखला",
@@ -1948,5 +1954,6 @@ export const translations = {
         },
       },
     },
+     ...brochure.HI,
   },
 };

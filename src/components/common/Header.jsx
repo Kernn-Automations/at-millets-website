@@ -11,6 +11,7 @@ import {
   ArrowRight,
   Globe,
   Home,
+  BookImage
 } from "lucide-react";
 
 import { useLanguage } from "../../i18n/LanguageContext";
@@ -246,6 +247,19 @@ const Header = () => {
                   </div>
                 );
               })}
+
+              <a
+                href="/brochure"
+                style={{
+                  ...styles.navButton,
+                  color: headerTheme.text,
+                  border: "none",
+                  paddingLeft: 0,
+                }}
+              >
+                <BookImage size={16} />
+                <span>{t("nav.brochure") || "Brochure"}</span>
+              </a>
             </nav>
           )}
 

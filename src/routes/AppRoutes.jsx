@@ -17,6 +17,8 @@ import Quality from "../pages/Quality/Quality";
 import Recipes from "../pages/Recipes/Recipes";
 import Contact from "../pages/Contact/Contact";
 import NotFound from "../components/common/NotFound";
+import Brochure from "../pages/Brochure/Brochure";
+import BrochureFloat from "../pages/Brochure/BrochureFloat";
 
 const AppRoutes = () => {
   const location = useLocation();
