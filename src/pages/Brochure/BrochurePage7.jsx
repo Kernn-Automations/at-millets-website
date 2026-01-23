@@ -1,3 +1,4 @@
+import { useMediaQuery } from "react-responsive";
 import HeaderDivider from "../../components/ui/HeaderDivider";
 import { useLanguage } from "../../i18n/LanguageContext";
 
@@ -31,15 +32,22 @@ const positions = [
 const BrochurePage7 = () => {
   const { t } = useLanguage();
 
-  const types = t("page7.types");
-  const ourBenefits = t("page7.ourBenefits");
+  const types = t("page7.types") || [];
+  const ourBenefits = t("page7.ourBenefits") || {};
 
   const benefitImages = [b1, b2, b3, b4, b5, b6, b7, b8];
-
   const productImages = [p1, p2, p3, p4, p5, p6];
 
+  const isMobile = useMediaQuery({ maxWidth: 640 });
+
   return (
-    <section style={styles.page} className="brochure-page">
+    <section
+      className="brochure-page"
+      style={{
+        ...styles.page,
+        padding: isMobile ? "24px 16px" : "40px 56px",
+      }}
+    >
       {/* ===== HEADER ===== */}
       <header style={styles.header}>
         <h1 style={styles.title}>{t("page7.title")}</h1>
@@ -47,11 +55,17 @@ const BrochurePage7 = () => {
         <HeaderDivider />
       </header>
 
-      {/* ===== TOP BENEFITS ===== */}
-      <div style={styles.typesGrid}>
+      {/* ===== TYPES GRID ===== */}
+      <div
+        style={{
+          ...styles.typesGrid,
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+        }}
+      >
         {types.map((item, i) => (
           <div key={i} style={styles.typeCard}>
             <h3 style={styles.typeTitle}>{item.title}</h3>
+
             <ul style={styles.bulletList}>
               {item.benefits.map((b, j) => (
                 <li key={j} style={styles.bulletItem}>
@@ -59,43 +73,61 @@ const BrochurePage7 = () => {
                 </li>
               ))}
             </ul>
+
             <div style={styles.imagePlaceholder}>
-              <img style={styles.image} src={productImages[i]} alt="" />
+              <img src={productImages[i]} alt="" style={styles.image} />
             </div>
           </div>
         ))}
       </div>
 
-      {/* ===== RADIAL BENEFITS ===== */}
-      <div style={styles.radialWrapper}>
-        <div style={styles.centerCircle}>
-          <span>{ourBenefits.title}</span>
-        </div>
-
-        {ourBenefits.benefits.map((b, i) => (
-          <div
-            key={i}
-            style={{
-              ...styles.radialItem,
-              ...positions[i],
-            }}
-          >
-            <img src={benefitImages[i]} alt={b} style={styles.benefitImage} />
-            <span style={styles.benefitText}>{b}</span>
+      {/* ===== BENEFITS ===== */}
+      {!isMobile ? (
+        /* RADIAL – DESKTOP */
+        <div style={styles.radialWrapper}>
+          <div style={styles.centerCircle}>
+            <span>{ourBenefits.title}</span>
           </div>
-        ))}
-      </div>
 
-      {/* <hr /> */}
+          {ourBenefits.benefits?.map((b, i) => (
+            <div
+              key={i}
+              style={{
+                ...styles.radialItem,
+                ...positions[i],
+              }}
+            >
+              <img src={benefitImages[i]} alt={b} style={styles.benefitImage} />
+              <span style={styles.benefitText}>{b}</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        /* LIST – MOBILE */
+        <div style={styles.mobileBenefits}>
+          <h3 style={styles.mobileBenefitsTitle}>{ourBenefits.title}</h3>
+
+          {ourBenefits.benefits?.map((b, i) => (
+            <div key={i} style={styles.mobileBenefitItem}>
+              <img
+                src={benefitImages[i]}
+                alt={b}
+                style={styles.mobileBenefitImage}
+              />
+              <span>{b}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };
 
+/* ================= STYLES ================= */
+
 const styles = {
   page: {
-    minHeight: "100vh",
     background: "#faf8f3",
-    padding: "40px 56px",
     fontFamily: "serif",
   },
 
@@ -116,10 +148,9 @@ const styles = {
     marginTop: 6,
   },
 
-  /* ===== TOP GRID ===== */
+  /* TYPES GRID */
   typesGrid: {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
     gap: 24,
     maxWidth: 1100,
     margin: "0 auto 50px",
@@ -134,20 +165,7 @@ const styles = {
     paddingTop: 30,
     display: "flex",
     justifyContent: "space-between",
-  },
-
-  imagePlaceholder: {
-    height: 100,
-    width: 200,
-
-    borderRadius: 16,
-    background: "#d9d9d9",
-    overflow: "hidden",
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
+    gap: 16,
   },
 
   typeTitle: {
@@ -155,11 +173,12 @@ const styles = {
     color: "#fff",
     borderRadius: 999,
     padding: "8px 14px",
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: 600,
-    alignSelf: "center",
     position: "absolute",
     top: -20,
+    left: "50%",
+    transform: "translateX(-50%)",
   },
 
   bulletList: {
@@ -169,16 +188,27 @@ const styles = {
   bulletItem: {
     fontSize: 14,
     lineHeight: 1.6,
-    marginBottom: 4,
   },
 
-  /* ===== RADIAL ===== */
+  imagePlaceholder: {
+    height: 100,
+    width: 200,
+    borderRadius: 16,
+    overflow: "hidden",
+  },
+
+  image: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  },
+
+  /* RADIAL (DESKTOP) */
   radialWrapper: {
     position: "relative",
     width: 720,
     height: 720,
     margin: "0 auto 60px",
-  
   },
 
   centerCircle: {
@@ -195,7 +225,6 @@ const styles = {
     textAlign: "center",
     fontWeight: 700,
     color: "#1f4d3a",
-    padding: 12,
     background: "#fff",
   },
 
@@ -216,13 +245,41 @@ const styles = {
   },
 
   benefitText: {
-    display: "block",
     lineHeight: 1.4,
   },
 
-  footer: {
+  /* MOBILE BENEFITS */
+  mobileBenefits: {
+    maxWidth: 500,
+    margin: "0 auto",
+    display: "flex",
+    flexDirection: "column",
+    gap: 16,
+  },
+
+  mobileBenefitsTitle: {
     textAlign: "center",
-    fontSize: 13,
+    fontSize: 20,
+    fontWeight: 700,
+    color: "#1f4d3a",
+    marginBottom: 10,
+  },
+
+  mobileBenefitItem: {
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+    background: "#fff",
+    borderRadius: 14,
+    padding: 12,
+    border: "1px solid #e3b23c",
+  },
+
+  mobileBenefitImage: {
+    width: 60,
+    height: 60,
+    borderRadius: "50%",
+    objectFit: "cover",
   },
 };
 

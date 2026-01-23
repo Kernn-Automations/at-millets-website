@@ -1,3 +1,4 @@
+import { useMediaQuery } from "react-responsive";
 import HeaderDivider from "../../components/ui/HeaderDivider";
 import { useLanguage } from "../../i18n/LanguageContext";
 import { ArrowRight } from "lucide-react";
@@ -8,20 +9,48 @@ import recipe2 from "../../assets/images/millet_dosa.png";
 const BrochurePage5 = () => {
   const { t } = useLanguage();
 
-  const recipes = t("page5.reciepes");
+  const recipes = t("page5.reciepes") || [];
   const recipeImages = [recipe1, recipe2];
 
+  const isMobile = useMediaQuery({ maxWidth: 640 });
+
   return (
-    <section style={styles.page} className="brochure-page">
+    <section
+      className="brochure-page"
+      style={{
+        ...styles.page,
+        padding: isMobile ? "24px 16px" : "40px 56px",
+      }}
+    >
       {/* ===== HEADER ===== */}
       <header style={styles.header}>
-        <h1 style={styles.title}>{t("page5.title")}</h1>
-        <p style={styles.subtitle}>{t("page5.subtitle")}</p>
+        <h1
+          style={{
+            ...styles.title,
+            fontSize: isMobile ? 24 : 34,
+          }}
+        >
+          {t("page5.title")}
+        </h1>
+        <p
+          style={{
+            ...styles.subtitle,
+            fontSize: isMobile ? 14 : 16,
+          }}
+        >
+          {t("page5.subtitle")}
+        </p>
         <HeaderDivider />
       </header>
 
       {/* ===== RECIPES GRID ===== */}
-      <div style={styles.grid}>
+      <div
+        style={{
+          ...styles.grid,
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: isMobile ? 24 : 40,
+        }}
+      >
         {recipes.map((recipe, index) => (
           <div key={index} style={styles.card}>
             {/* IMAGE */}
@@ -34,16 +63,41 @@ const BrochurePage5 = () => {
             </div>
 
             {/* CONTENT */}
-            <div style={styles.content}>
-              <h2 style={styles.recipeTitle}>{recipe.title}</h2>
+            <div
+              style={{
+                ...styles.content,
+                padding: isMobile ? "18px 20px 22px" : "22px 26px 28px",
+              }}
+            >
+              <h2
+                style={{
+                  ...styles.recipeTitle,
+                  fontSize: isMobile ? 18 : 22,
+                }}
+              >
+                {recipe.title}
+              </h2>
 
               {recipe.subtitle && (
-                <p style={styles.recipeSubtitle}>{recipe.subtitle}</p>
+                <p
+                  style={{
+                    ...styles.recipeSubtitle,
+                    fontSize: isMobile ? 13 : 14,
+                  }}
+                >
+                  {recipe.subtitle}
+                </p>
               )}
 
               <ul style={styles.steps}>
                 {recipe.steps.map((step, i) => (
-                  <li key={i} style={styles.step}>
+                  <li
+                    key={i}
+                    style={{
+                      ...styles.step,
+                      fontSize: isMobile ? 13 : 14,
+                    }}
+                  >
                     <ArrowRight size={16} style={styles.stepIcon} />
                     <span>{step}</span>
                   </li>
@@ -53,16 +107,15 @@ const BrochurePage5 = () => {
           </div>
         ))}
       </div>
-      {/* <hr /> */}
     </section>
   );
 };
 
+/* ================= STYLES ================= */
+
 const styles = {
   page: {
-    minHeight: "100vh",
     background: "#faf8f3",
-    padding: "40px 56px",
     display: "flex",
     flexDirection: "column",
     fontFamily: "serif",
@@ -75,22 +128,18 @@ const styles = {
   },
 
   title: {
-    fontSize: 34,
     fontWeight: 700,
     color: "#1f4d3a",
     marginBottom: 6,
   },
 
   subtitle: {
-    fontSize: 16,
     color: "#3a6b55",
   },
 
   /* ===== GRID ===== */
   grid: {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: 40,
     maxWidth: 1000,
     margin: "0 auto",
     marginBottom: 20,
@@ -119,21 +168,18 @@ const styles = {
   },
 
   content: {
-    padding: "22px 26px 28px",
     display: "flex",
     flexDirection: "column",
     gap: 12,
   },
 
   recipeTitle: {
-    fontSize: 22,
     fontWeight: 700,
     color: "#1f4d3a",
     textAlign: "center",
   },
 
   recipeSubtitle: {
-    fontSize: 14,
     color: "#4a6f5a",
     textAlign: "center",
   },
@@ -153,7 +199,6 @@ const styles = {
     gridTemplateColumns: "18px 1fr",
     alignItems: "start",
     gap: 8,
-    fontSize: 14,
     lineHeight: 1.6,
     color: "#2f2f2f",
   },

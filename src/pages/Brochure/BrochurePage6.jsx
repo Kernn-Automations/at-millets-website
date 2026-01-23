@@ -1,3 +1,4 @@
+import { useMediaQuery } from "react-responsive";
 import HeaderDivider from "../../components/ui/HeaderDivider";
 import { useLanguage } from "../../i18n/LanguageContext";
 import { ArrowRight } from "lucide-react";
@@ -10,15 +11,37 @@ import step4 from "../../assets/images/store_front.png";
 const BrochurePage6 = () => {
   const { t } = useLanguage();
 
-  const process = t("page6.process");
+  const process = t("page6.process") || [];
   const images = [step1, step2, step3, step4];
 
+  const isMobile = useMediaQuery({ maxWidth: 640 });
+
   return (
-    <section style={styles.page} className="brochure-page">
+    <section
+      className="brochure-page"
+      style={{
+        ...styles.page,
+        padding: isMobile ? "24px 16px" : "40px 56px",
+      }}
+    >
       {/* ===== HEADER ===== */}
       <header style={styles.header}>
-        <h1 style={styles.title}>{t("page6.title")}</h1>
-        <p style={styles.subtitle}>{t("page6.subtitle")}</p>
+        <h1
+          style={{
+            ...styles.title,
+            fontSize: isMobile ? 24 : 34,
+          }}
+        >
+          {t("page6.title")}
+        </h1>
+        <p
+          style={{
+            ...styles.subtitle,
+            fontSize: isMobile ? 14 : 16,
+          }}
+        >
+          {t("page6.subtitle")}
+        </p>
         <HeaderDivider />
       </header>
 
@@ -32,49 +55,53 @@ const BrochurePage6 = () => {
               key={index}
               style={{
                 ...styles.stepRow,
-                gridTemplateColumns: isReverse
-                  ? "1fr auto 1fr"
-                  : "1fr auto 1fr",
+                gridTemplateColumns: isMobile ? "1fr" : "1fr auto 1fr",
+                textAlign: isMobile ? "center" : "left",
               }}
             >
-              {/* IMAGE LEFT */}
-              {!isReverse && (
-                <div style={styles.imageBox}>
-                  <img
-                    src={images[index]}
-                    alt={step.title}
-                    style={styles.image}
-                  />
-                </div>
-              )}
+              {/* IMAGE */}
+              <div style={styles.imageBox}>
+                <img
+                  src={images[index]}
+                  alt={step.title}
+                  style={styles.image}
+                />
+              </div>
 
               {/* CONTENT */}
               <div
                 style={{
                   ...styles.content,
-                  textAlign: isReverse ? "right" : "left",
+                  textAlign: isMobile ? "center" : isReverse ? "right" : "left",
                 }}
               >
-                <h3 style={styles.stepTitle}>
+                <h3
+                  style={{
+                    ...styles.stepTitle,
+                    fontSize: isMobile ? 18 : 20,
+                  }}
+                >
                   {index + 1}. {step.title}
                 </h3>
-                <p style={styles.desc}>{step.desc}</p>
+                <p
+                  style={{
+                    ...styles.desc,
+                    fontSize: isMobile ? 14 : 15,
+                  }}
+                >
+                  {step.desc}
+                </p>
               </div>
 
               {/* ARROW */}
-              <div style={styles.arrowWrap}>
-                {index !== process.length - 1 && (
-                  <ArrowRight size={28} style={styles.arrow} />
-                )}
-              </div>
-
-              {/* IMAGE RIGHT */}
-              {isReverse && (
-                <div style={styles.imageBox}>
-                  <img
-                    src={images[index]}
-                    alt={step.title}
-                    style={styles.image}
+              {index !== process.length - 1 && (
+                <div style={styles.arrowWrap}>
+                  <ArrowRight
+                    size={28}
+                    style={{
+                      ...styles.arrow,
+                      transform: isMobile ? "rotate(90deg)" : "none",
+                    }}
                   />
                 </div>
               )}
@@ -82,17 +109,15 @@ const BrochurePage6 = () => {
           );
         })}
       </div>
-
-      {/* <hr /> */}
     </section>
   );
 };
 
+/* ================= STYLES ================= */
+
 const styles = {
   page: {
-    minHeight: "100vh",
     background: "#faf8f3",
-    padding: "40px 56px",
     fontFamily: "serif",
     display: "flex",
     flexDirection: "column",
@@ -105,14 +130,12 @@ const styles = {
   },
 
   title: {
-    fontSize: 34,
     fontWeight: 700,
     color: "#1f4d3a",
     marginBottom: 6,
   },
 
   subtitle: {
-    fontSize: 16,
     color: "#3a6b55",
   },
 
@@ -128,7 +151,6 @@ const styles = {
 
   stepRow: {
     display: "grid",
-    gridTemplateColumns: "1fr auto 1fr",
     alignItems: "center",
     gap: 24,
   },
@@ -137,7 +159,9 @@ const styles = {
     borderRadius: 20,
     overflow: "hidden",
     border: "2px solid #e3b23c",
-    width: 500,
+    width: "100%",
+    maxWidth: 500,
+    margin: "0 auto",
   },
 
   image: {
@@ -153,13 +177,11 @@ const styles = {
   },
 
   stepTitle: {
-    fontSize: 20,
     fontWeight: 700,
     color: "#1f4d3a",
   },
 
   desc: {
-    fontSize: 15,
     lineHeight: 1.6,
     color: "#2f2f2f",
   },
@@ -173,12 +195,6 @@ const styles = {
   arrow: {
     color: "#d6b25e",
     strokeWidth: 2.5,
-  },
-
-  footer: {
-    textAlign: "center",
-    fontSize: 13,
-    marginTop: 40,
   },
 };
 

@@ -11,7 +11,7 @@ import {
   ArrowRight,
   Globe,
   Home,
-  BookImage
+  BookImage,
 } from "lucide-react";
 
 import { useLanguage } from "../../i18n/LanguageContext";
@@ -332,17 +332,21 @@ const Header = () => {
             )}
 
             {/* MOBILE TOGGLE */}
+            {/* MOBILE ACTIONS */}
             {isMobile && (
-              <button
-                style={{
-                  ...styles.mobileToggle,
-                  color: headerTheme.text,
-                  border: `1px solid ${headerTheme.border}`,
-                }}
-                onClick={() => setMobileOpen((v) => !v)}
-              >
-                {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-              </button>
+              <>
+                {/* MENU TOGGLE */}
+                <button
+                  style={{
+                    ...styles.mobileToggle,
+                    color: headerTheme.text,
+                    border: `1px solid ${headerTheme.border}`,
+                  }}
+                  onClick={() => setMobileOpen((v) => !v)}
+                >
+                  {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+                </button>
+              </>
             )}
           </div>
         </div>
@@ -388,6 +392,21 @@ const Header = () => {
               </div>
             )}
             <div style={styles.mobileSection}>
+              {/* BROCHURE BUTTON */}
+              <a
+                href="/brochure"
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  ...styles.mobileActionSecondary,
+                  color: headerTheme.text,
+                  border: `1px solid ${headerTheme.border}`,
+                }}
+              >
+                <BookImage size={18} />
+                <span>{t("nav.brochure") || "Brochure"}</span>
+              </a>
+
+              {/* PARTNER BUTTON */}
               <button
                 style={styles.mobilePartnerButton}
                 onClick={() => {
@@ -616,6 +635,37 @@ const styles = {
     padding: "6px 0 10px",
   },
 
+  /* ===== MOBILE ACTIONS ===== */
+  mobileActionPrimary: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    padding: "12px",
+    borderRadius: 14,
+    background: "linear-gradient(135deg,#2f6f4e,#3c8b65)",
+    color: "#fff",
+    fontWeight: 700,
+    border: "none",
+    cursor: "pointer",
+  },
+
+  mobileActionSecondary: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    padding: "12px",
+    marginBottom: 10,
+    borderRadius: 14,
+    background: "rgba(47,111,78,0.08)",
+    fontWeight: 600,
+    textDecoration: "none",
+    cursor: "pointer",
+  },
+
   langPill: {
     padding: "4px 10px",
     fontSize: 13,
@@ -643,6 +693,16 @@ const styles = {
     padding: 16,
     boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
     zIndex: 999,
+  },
+  mobileBrochureButton: {
+    width: 38,
+    height: 38,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    background: "transparent",
+    textDecoration: "none",
   },
 
   mobileSection: { marginBottom: 14 },
