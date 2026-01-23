@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import { BookImage, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const messages = [
   "👋 Need help? Chat with us!",
@@ -24,18 +26,17 @@ const WhatsAppFloat = () => {
   useEffect(() => {
     const initialTimer = setTimeout(() => {
       setShowPopup(false);
-    }, 6000);
+    }, 10000);
 
     const interval = setInterval(() => {
-      const random =
-        messages[Math.floor(Math.random() * messages.length)];
+      const random = messages[Math.floor(Math.random() * messages.length)];
       setPopupText(random);
       setShowPopup(true);
 
       setTimeout(() => {
         setShowPopup(false);
-      }, 6000);
-    }, 10000);
+      }, 4000);
+    }, 30000);
 
     return () => {
       clearTimeout(initialTimer);
@@ -47,6 +48,16 @@ const WhatsAppFloat = () => {
     <>
       {showPopup && <div style={styles.popup}>{popupText}</div>}
 
+      {/* 📘 Brochure Button */}
+      <Link
+        to="/brochure"
+        aria-label="View Brochure"
+        style={styles.brochureButton}
+      >
+        <FileText size={26} />
+      </Link>
+
+      {/* 💬 WhatsApp Button */}
       <a
         href={whatsappUrl}
         target="_blank"
@@ -94,6 +105,22 @@ const styles = {
   icon: {
     color: "#ffffff",
     fontSize: "32px",
+  },
+  brochureButton: {
+    position: "fixed",
+    bottom: "92px", // 👈 sits on top of WhatsApp
+    right: "24px",
+    width: "52px",
+    height: "52px",
+    borderRadius: "50%",
+    backgroundColor: "#ffffff",
+    color: "#1a1a1a",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+    boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
+    textDecoration: "none",
   },
   popup: {
     position: "fixed",
