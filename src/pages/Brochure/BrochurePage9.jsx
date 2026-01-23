@@ -1,3 +1,4 @@
+import { useMediaQuery } from "react-responsive";
 import HeaderDivider from "../../components/ui/HeaderDivider";
 import { useLanguage } from "../../i18n/LanguageContext";
 import shopImage from "../../assets/images/at-millets-new-shop.png";
@@ -5,20 +6,53 @@ import shopImage from "../../assets/images/at-millets-new-shop.png";
 const BrochurePage9 = () => {
   const { t } = useLanguage();
 
-  const benefits = t("page9.benefits");
+  const benefits = t("page9.benefits") || [];
+  const isMobile = useMediaQuery({ maxWidth: 640 });
 
   return (
-    <section style={styles.page} className="brochure-page">
+    <section
+      className="brochure-page"
+      style={{
+        ...styles.page,
+        padding: isMobile ? "24px 16px" : "40px 56px",
+      }}
+    >
       {/* ===== HEADER ===== */}
       <header style={styles.header}>
-        <h1 style={styles.title}>{t("page9.title")}</h1>
-        <p style={styles.subtitle}>{t("page9.subtitle")}</p>
+        <h1
+          style={{
+            ...styles.title,
+            fontSize: isMobile ? 24 : 34,
+          }}
+        >
+          {t("page9.title")}
+        </h1>
+        <p
+          style={{
+            ...styles.subtitle,
+            fontSize: isMobile ? 14 : 16,
+          }}
+        >
+          {t("page9.subtitle")}
+        </p>
         <HeaderDivider />
       </header>
 
       {/* ===== MAIN CONTAINER ===== */}
-      <div style={styles.container}>
-        <p style={styles.mainPara}>{t("page9.mainPara")}</p>
+      <div
+        style={{
+          ...styles.container,
+          padding: isMobile ? "20px 16px 24px" : "28px 32px 36px",
+        }}
+      >
+        <p
+          style={{
+            ...styles.mainPara,
+            fontSize: isMobile ? 14 : 15,
+          }}
+        >
+          {t("page9.mainPara")}
+        </p>
 
         {/* IMAGE */}
         <div style={styles.imageWrap}>
@@ -26,12 +60,32 @@ const BrochurePage9 = () => {
         </div>
 
         {/* BENEFITS GRID */}
-        <div style={styles.benefitsGrid}>
+        <div
+          style={{
+            ...styles.benefitsGrid,
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+            gap: isMobile ? 18 : 22,
+          }}
+        >
           {benefits.map((item, index) => (
             <div key={index} style={styles.benefitCard}>
               <div style={styles.checkIcon}>✓</div>
-              <h3 style={styles.benefitTitle}>{item.title}</h3>
-              <p style={styles.benefitDesc}>{item.desc}</p>
+              <h3
+                style={{
+                  ...styles.benefitTitle,
+                  fontSize: isMobile ? 15 : 17,
+                }}
+              >
+                {item.title}
+              </h3>
+              <p
+                style={{
+                  ...styles.benefitDesc,
+                  fontSize: isMobile ? 13 : 14,
+                }}
+              >
+                {item.desc}
+              </p>
             </div>
           ))}
         </div>
@@ -40,44 +94,40 @@ const BrochurePage9 = () => {
   );
 };
 
+/* ================= STYLES ================= */
+
 const styles = {
   page: {
-    minHeight: "100vh",
     background: "#faf8f3",
-    padding: "40px 56px",
     fontFamily: "serif",
   },
 
-  /* ===== HEADER ===== */
+  /* HEADER */
   header: {
     textAlign: "center",
     marginBottom: 32,
   },
 
   title: {
-    fontSize: 34,
     fontWeight: 700,
     color: "#1f4d3a",
   },
 
   subtitle: {
-    fontSize: 16,
     color: "#3a6b55",
     marginTop: 6,
   },
 
-  /* ===== OUTER BOX ===== */
+  /* CONTAINER */
   container: {
     maxWidth: 980,
     margin: "0 auto",
     border: "2px solid #e3b23c",
     borderRadius: 28,
-    padding: "28px 32px 36px",
     background: "#fffdf6",
   },
 
   mainPara: {
-    fontSize: 15,
     lineHeight: 1.7,
     textAlign: "center",
     maxWidth: 760,
@@ -85,7 +135,7 @@ const styles = {
     color: "#2f2f2f",
   },
 
-  /* ===== IMAGE ===== */
+  /* IMAGE */
   imageWrap: {
     maxWidth: 720,
     margin: "0 auto 28px",
@@ -99,11 +149,9 @@ const styles = {
     display: "block",
   },
 
-  /* ===== BENEFITS ===== */
+  /* BENEFITS */
   benefitsGrid: {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: 22,
   },
 
   benefitCard: {
@@ -112,7 +160,6 @@ const styles = {
     borderRadius: 20,
     padding: "22px 20px 20px",
     background: "#fff",
-    textAlign: "left",
   },
 
   checkIcon: {
@@ -133,23 +180,14 @@ const styles = {
   },
 
   benefitTitle: {
-    fontSize: 17,
     fontWeight: 700,
     color: "#1f4d3a",
     marginBottom: 6,
   },
 
   benefitDesc: {
-    fontSize: 14,
     lineHeight: 1.6,
     color: "#2f2f2f",
-  },
-
-  /* ===== FOOTER ===== */
-  footer: {
-    textAlign: "center",
-    fontSize: 13,
-    marginTop: 28,
   },
 };
 

@@ -1,17 +1,39 @@
+import { useMediaQuery } from "react-responsive";
 import HeaderDivider from "../../components/ui/HeaderDivider";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 const BrochurePage10 = () => {
   const { t } = useLanguage();
 
-  const places = t("page10.places");
+  const places = t("page10.places") || [];
+  const isMobile = useMediaQuery({ maxWidth: 640 });
 
   return (
-    <section style={styles.page} className="brochure-page">
+    <section
+      className="brochure-page"
+      style={{
+        ...styles.page,
+        padding: isMobile ? "24px 16px" : "40px 56px",
+      }}
+    >
       {/* ===== HEADER ===== */}
       <header style={styles.header}>
-        <h1 style={styles.title}>{t("page10.title")}</h1>
-        <p style={styles.subtitle}>{t("page10.para")}</p>
+        <h1
+          style={{
+            ...styles.title,
+            fontSize: isMobile ? 24 : 34,
+          }}
+        >
+          {t("page10.title")}
+        </h1>
+        <p
+          style={{
+            ...styles.subtitle,
+            fontSize: isMobile ? 14 : 16,
+          }}
+        >
+          {t("page10.para")}
+        </p>
         <HeaderDivider />
       </header>
 
@@ -26,51 +48,68 @@ const BrochurePage10 = () => {
             <div
               style={{
                 ...styles.contactsGrid,
-                gridTemplateColumns: `repeat(${place.contacts.length}, 1fr)`,
+                gridTemplateColumns: isMobile
+                  ? "1fr"
+                  : `repeat(${place.contacts.length}, 1fr)`,
               }}
             >
               {place.contacts.map((c, i) => (
-                <div key={i} style={styles.contactCard}>
-                  <div style={styles.person}>{c.person}</div>
-                  <div style={styles.number}>{c.number}</div>
+                <div
+                  key={i}
+                  style={{
+                    ...styles.contactCard,
+                    width: isMobile ? "100%" : "auto",
+                    maxWidth: isMobile ? 320 : "none",
+                  }}
+                >
+                  <div
+                    style={{
+                      ...styles.person,
+                      fontSize: isMobile ? 15 : 16,
+                    }}
+                  >
+                    {c.person}
+                  </div>
+                  <div
+                    style={{
+                      ...styles.number,
+                      fontSize: isMobile ? 14 : 15,
+                    }}
+                  >
+                    {c.number}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         ))}
       </div>
-
     </section>
   );
 };
 
 const styles = {
   page: {
-    minHeight: "100vh",
     background: "#faf8f3",
-    padding: "40px 56px",
-    
   },
 
-  /* ===== HEADER ===== */
+  /* HEADER */
   header: {
     textAlign: "center",
     marginBottom: 36,
   },
 
   title: {
-    fontSize: 34,
     fontWeight: 700,
     color: "#1f4d3a",
   },
 
   subtitle: {
-    fontSize: 16,
     color: "#3a6b55",
     marginTop: 6,
   },
 
-  /* ===== SECTIONS ===== */
+  /* SECTIONS */
   sections: {
     display: "flex",
     flexDirection: "column",
@@ -109,28 +148,18 @@ const styles = {
     background: "#f6eed1",
     borderRadius: 26,
     padding: "22px 26px",
-    minWidth: 220,
     textAlign: "center",
   },
 
   person: {
-    fontSize: 16,
     fontWeight: 700,
     color: "#000",
     marginBottom: 6,
   },
 
   number: {
-    fontSize: 15,
     fontWeight: 600,
     color: "#000",
-  },
-
-  /* ===== FOOTER ===== */
-  footer: {
-    textAlign: "center",
-    fontSize: 13,
-    marginTop: 36,
   },
 };
 

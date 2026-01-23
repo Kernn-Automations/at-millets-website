@@ -1,7 +1,8 @@
+import { useMediaQuery } from "react-responsive";
 import HeaderDivider from "../../components/ui/HeaderDivider";
 import { useLanguage } from "../../i18n/LanguageContext";
 
-/* images – replace with your actual assets */
+/* images */
 import img1 from "../../assets/images/farmers.png";
 import img2 from "../../assets/images/natural-farming.png";
 import img3 from "../../assets/images/sustainable-farming.png";
@@ -12,81 +13,122 @@ import img6 from "../../assets/images/villagers.png";
 const BrochurePage8 = () => {
   const { t } = useLanguage();
 
-  const details = t("page8.details");
+  const details = t("page8.details") || [];
   const images = [img1, img2, img3, img4, img5, img6];
 
+  const isMobile = useMediaQuery({ maxWidth: 640 });
+
   return (
-    <section style={styles.page} className="brochure-page">
+    <section
+      className="brochure-page"
+      style={{
+        ...styles.page,
+        padding: isMobile ? "24px 16px" : "40px 56px",
+      }}
+    >
       {/* ===== HEADER ===== */}
       <header style={styles.header}>
-        <h1 style={styles.title}>{t("page8.title")}</h1>
-        <p style={styles.subtitle}>{t("page8.subtitle")}</p>
+        <h1
+          style={{
+            ...styles.title,
+            fontSize: isMobile ? 24 : 34,
+          }}
+        >
+          {t("page8.title")}
+        </h1>
+        <p
+          style={{
+            ...styles.subtitle,
+            fontSize: isMobile ? 14 : 16,
+          }}
+        >
+          {t("page8.subtitle")}
+        </p>
         <HeaderDivider />
       </header>
 
       {/* ===== GRID ===== */}
-      <div style={styles.grid}>
+      <div
+        style={{
+          ...styles.grid,
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: isMobile ? 24 : "36px 60px",
+        }}
+      >
         {details.map((item, i) => (
           <div key={i} style={styles.card}>
-            <div style={styles.imageWrap}>
+            <div
+              style={{
+                ...styles.imageWrap,
+                width: isMobile ? 120 : 160,
+                height: isMobile ? 120 : 160,
+              }}
+            >
               <img src={images[i]} alt={item.title} style={styles.image} />
             </div>
 
-            <h3 style={styles.cardTitle}>{item.title}</h3>
-            <p style={styles.cardDesc}>{item.desc}</p>
+            <h3
+              style={{
+                ...styles.cardTitle,
+                fontSize: isMobile ? 16 : 18,
+              }}
+            >
+              {item.title}
+            </h3>
+
+            <p
+              style={{
+                ...styles.cardDesc,
+                fontSize: isMobile ? 13 : 14,
+              }}
+            >
+              {item.desc}
+            </p>
           </div>
         ))}
       </div>
-      {/* <hr /> */}
     </section>
   );
 };
 
+/* ================= STYLES ================= */
+
 const styles = {
   page: {
-    minHeight: "100vh",
     background: "#faf8f3",
-    padding: "40px 56px",
     fontFamily: "serif",
   },
 
-  /* ===== HEADER ===== */
+  /* HEADER */
   header: {
     textAlign: "center",
     marginBottom: 36,
   },
 
   title: {
-    fontSize: 34,
     fontWeight: 700,
     color: "#1f4d3a",
   },
 
   subtitle: {
-    fontSize: 16,
     color: "#3a6b55",
     marginTop: 6,
   },
 
-  /* ===== GRID ===== */
+  /* GRID */
   grid: {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "36px 60px",
     maxWidth: 1100,
     margin: "0 auto",
   },
 
-  /* ===== CARD ===== */
+  /* CARD */
   card: {
     textAlign: "center",
     padding: "12px 18px",
-    position: "relative",
   },
 
   imageWrap: {
-    width: 160,
-    height: 160,
     margin: "0 auto 12px",
     borderRadius: "50%",
     border: "3px solid #e3b23c",
@@ -100,23 +142,14 @@ const styles = {
   },
 
   cardTitle: {
-    fontSize: 18,
     fontWeight: 700,
     color: "#000",
     marginBottom: 6,
   },
 
   cardDesc: {
-    fontSize: 14,
     lineHeight: 1.6,
     color: "#2f2f2f",
-  },
-
-  /* ===== FOOTER ===== */
-  footer: {
-    textAlign: "center",
-    fontSize: 13,
-    marginTop: 32,
   },
 };
 
