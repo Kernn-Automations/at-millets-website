@@ -16,7 +16,7 @@ const messages = [
 ];
 
 const WhatsAppFloat = () => {
-  const phoneNumber = "919542565613";
+  const phoneNumber = "918897265146";
   const message = encodeURIComponent("Hi");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
